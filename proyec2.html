@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perdón Mi Amor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #ffc0cb;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+        }
+        
+        .flower-container {
+            position: relative;
+            width: 200px;
+            height: 250px;
+            margin: 20px auto;
+        }
+        
+        .flower {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .petal {
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            background: linear-gradient(to bottom, #ff69b4, #ff1493);
+            border-radius: 50% 50% 0 0;
+            transform-origin: bottom center;
+        }
+        
+        .center {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: yellow;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+        
+        .stem {
+            position: absolute;
+            width: 8px;
+            height: 120px;
+            background: green;
+            top: 90px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+        
+        .leaf {
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            background: green;
+            border-radius: 50%;
+            transform-origin: center;
+        }
+        
+        .message {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ff69b4;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            margin: 30px 0;
+            line-height: 1.2;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+        
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-si {
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            color: white;
+            transform: scale(1);
+        }
+        
+        .btn-no {
+            background: linear-gradient(45deg, #ff4500, #ff6347);
+            color: white;
+            transform: scale(1);
+        }
+        
+        .btn-si:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .btn-no:hover {
+            transform: scale(0.95);
+        }
+        
+        .thank-you {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 192, 203, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+        
+        .thank-you.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .thank-you h2 {
+            font-size: 4rem;
+            color: #ff69b4;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+        
+        .thank-you p {
+            font-size: 2rem;
+            color: #ff1493;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .message {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+                font-size: 1.2rem;
+            }
+            
+            .thank-you h2 {
+                font-size: 2.5rem;
+            }
+            
+            .thank-you p {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .message {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 1rem;
+                width: 120px;
+            }
+            
+            .buttons-container {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="flower-container">
+            <div class="flower">
+                <!-- Pétalos -->
+                <div class="petal" style="transform: rotate(0deg) translateY(-30px);"></div>
+                <div class="petal" style="transform: rotate(45deg) translateY(-30px);"></div>
+                <div class="petal" style="transform: rotate(90deg) translateY(-30px);"></div>
+                <div class="petal" style="transform: rotate(135deg) translateY(-30px);"></div>
+                <div class="petal" style="transform: rotate(180deg) translateY(-30px);"></div>
+                <div class="petal" style="transform: rotate(225deg) translateY(-30px);"></div>
+                <div class="petal" style="transform: rotate(270deg) translateY(-30px);"></div>
+                <div class="petal" style="transform: rotate(315deg) translateY(-30px);"></div>
+                
+                <!-- Centro -->
+                <div class="center"></div>
+                
+                <!-- Tallo -->
+                <div class="stem"></div>
+                
+                <!-- Hojas -->
+                <div class="leaf" style="top: 120px; left: 40px; transform: rotate(45deg);"></div>
+                <div class="leaf" style="top: 140px; right: 40px; transform: rotate(-45deg);"></div>
+            </div>
+        </div>
+        <h1 class="message">Perdóname Allisson mi amor</h1>
+        <div class="buttons-container">
+            <button class="btn btn-si" id="btnSi">SÍ</button>
+            <button class="btn btn-no" id="btnNo">NO</button>
+        </div>
+    </div>
+    
+    <div class="thank-you" id="thankYou">
+        <h2>¡GRACIAS MI AMOR! 💖</h2>
+        <p>Te amo con todo mi corazón</p>
+    </div>
+
+    <script>
+        const btnSi = document.getElementById('btnSi');
+        const btnNo = document.getElementById('btnNo');
+        const thankYou = document.getElementById('thankYou');
+        
+        // Función para mover el botón "NO" a una posición aleatoria
+        function moveNoButton() {
+            const container = document.querySelector('.container');
+            const containerRect = container.getBoundingClientRect();
+            const buttonRect = btnNo.getBoundingClientRect();
+            
+            const maxX = containerRect.width - buttonRect.width;
+            const maxY = containerRect.height - buttonRect.height;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            btnNo.style.position = 'absolute';
+            btnNo.style.left = randomX + 'px';
+            btnNo.style.top = randomY + 'px';
+            
+            // Hacer más pequeño el botón
+            const currentScale = parseFloat(btnNo.style.transform.replace('scale(', '').replace(')', '') || 1);
+            const newScale = currentScale * 0.8;
+            
+            if (newScale > 0.1) {
+                btnNo.style.transform = `scale(${newScale})`;
+            } else {
+                btnNo.style.display = 'none';
+            }
+        }
+        
+        // Evento para el botón "SÍ"
+        btnSi.addEventListener('click', () => {
+            thankYou.classList.add('show');
+        });
+        
+        // Evento para el botón "NO"
+        btnNo.addEventListener('click', moveNoButton);
+        
+        // También mover el botón "NO" cuando el mouse se acerca
+        btnNo.addEventListener('mouseover', moveNoButton);
+    </script>
+</body>
+</html>
+
